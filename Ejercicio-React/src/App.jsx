@@ -1,34 +1,40 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import Inputs from './components/calculator/Inputs'
+import Buttons from './components/calculator/Buttons'
+import Result from './components/calculator/Result'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [valorA, setValorA] = useState(0)
+  const [valorB, setValorB] = useState(0)
+  const [operacion, setOperacion] = useState('+')
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="container mt-5">
+      <div className="row justify-content-center">
+        <div className="col-md-6 text-center card shadow-lg p-5 bg-white border-0 rounded-4">
+          <h2 className="mb-4 text-primary fw-bold">Calculadora</h2>
+
+          <Inputs
+            valorA={valorA}
+            setValorA={setValorA}
+            valorB={valorB}
+            setValorB={setValorB}
+          />
+
+          <Buttons
+            operacion={operacion}
+            setOperacion={setOperacion}
+          />
+
+          <Result
+            valorA={valorA}
+            valorB={valorB}
+            operacion={operacion}
+          />
+
+        </div>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    </div>
   )
 }
 
